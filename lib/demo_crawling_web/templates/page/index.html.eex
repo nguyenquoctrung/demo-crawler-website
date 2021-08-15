@@ -10,19 +10,24 @@
   <div class="column column-25 ">
   <div class="item">
     <img src="<%= item["image"]%>"/>
-    <div class="product-name"><%= item["product_name"]%> </div>
+    <a href="<%= item["Link"]%>" target="_blank" class="product-name"><%= item["product_name"]%> </a>
     <div>
-      <div style="text-decoration-line: line-through;"> <%= item["price_before_discount"]%> <%= item["currency"]%></div>
-      <div> <%= item["price"]%> <%= item["currency"]%> 
-      
-      <%= if item["discount"] do %>
+      <div style="text-decoration-line: line-through;"> 
+        <%= if (item["price_before_discount"] != nil && item["price_before_discount"] !="") do %>
+          <%= item["price_before_discount"]%> <%= item["currency"]%>
+        <% end %>
+      </div>
+    <div> 
+      <%= item["price"]%> 
+      <%= item["currency"]%> 
+        <%= if (item["discount"] != nil) do %>
            (<%= item["discount"] %>)
          <% end %>
-      <%# (<%= item["discount"]%>) %>
-       </div>
+      <%# (<%= item["discount"]%></div>
     </div>
     <div>Stock: <%= item["stock"]%></div>
     </div>
+
  
   </div>
 <% end %>
