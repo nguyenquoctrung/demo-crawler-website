@@ -13,7 +13,13 @@
     <div class="product-name"><%= item["product_name"]%> </div>
     <div>
       <div style="text-decoration-line: line-through;"> <%= item["price_before_discount"]%> <%= item["currency"]%></div>
-      <div> <%= item["price"]%> <%= item["currency"]%> (<%= item["discount"]%>) </div>
+      <div> <%= item["price"]%> <%= item["currency"]%> 
+      
+      <%= if item["discount"] do %>
+           (<%= item["discount"] %>)
+         <% end %>
+      <%# (<%= item["discount"]%>) %>
+       </div>
     </div>
     <div>Stock: <%= item["stock"]%></div>
     </div>
