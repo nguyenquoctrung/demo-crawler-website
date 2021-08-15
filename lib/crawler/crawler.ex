@@ -1,3 +1,4 @@
+
 defmodule DemoCrawler do
   def fetch(url) do
     response = Crawly.fetch(url)
@@ -38,6 +39,7 @@ defmodule DemoCrawler do
 
           itemid=item_info["itemid"]
 
+          link="https://shopee.vn/"<>"-"<>String.replace(item_info["name"],~r/[^a-zA-Z0-9]/, "-")<> "-i." <> Integer.to_string(item_info["shopid"])<>"."<>Integer.to_string(item_info["itemid"])
 
           %{
             "shopid"=>shopid,
@@ -50,7 +52,8 @@ defmodule DemoCrawler do
             "price_before_discount" =>price_before_discount,
             "discount" =>discount,
             "currency" =>currency,
-            "stock"=>stock
+            "stock"=>stock,
+            "Link"=>link
           }
         end)
 
