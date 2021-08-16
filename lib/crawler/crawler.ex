@@ -2,11 +2,11 @@
 defmodule DemoCrawler do
   def fetch(url) do
     response = Crawly.fetch(url)
-    data = parse_item(response)
+    data = convert_response(response)
     data
   end
 
-  defp parse_item(response) do
+  defp convert_response(response) do
     {:ok, document} = Floki.parse_document(response.body)
 
     {:ok, results} = Poison.decode(document)
